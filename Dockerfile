@@ -1,5 +1,5 @@
 # Use multi-stage build with caching optimizations
-FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS base
+FROM nvidia/cuda:12.9.1-cudnn-devel-ubuntu24.04 AS base
 
 # Consolidated environment variables
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -28,7 +28,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --pre torch torchvision torchaudio \
-        --index-url https://download.pytorch.org/whl/nightly/cu128
+        --index-url https://download.pytorch.org/whl/nightly/cu129
 
 # Core Python tooling
 RUN --mount=type=cache,target=/root/.cache/pip \
